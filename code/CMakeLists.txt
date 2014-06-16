@@ -5,6 +5,9 @@ project(empty CXX)
 
 include(cmake/environment.cmake)
 
+# enable ctest support for testing
+enable_testing()
+
 # States that CMake required version must be >= 2.6
 cmake_minimum_required(VERSION 2.6)
 
@@ -30,7 +33,8 @@ foreach ( case_file ${test_cases})
 	add_executable(${case_name} ${case_file})
 
 	target_link_libraries(${case_name} project_lib)
-	
+	target_link_libraries(${case_name} ${pthread_lib})
+
 	add_unit_test(${case_name})
 endforeach(case_file)
 

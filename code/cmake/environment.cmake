@@ -40,15 +40,18 @@ endif()
 # set up third-part library home
 if (NOT third_part_libs_home )
 	if ( DEFINED LIBS_HOME ) 
-		set ( third_part_libs_home ${LIBS_HOME} CACHE PATH "Third part library home" )
+		set ( third_part_libs_home ${LIBS_HOME} CACHE PATH "Third party library home" )
 	else()
-		set ( third_part_libs_home $ENV{LIBS_HOME} CACHE PATH "Third part library home" )
+		set ( third_part_libs_home $ENV{LIBS_HOME} CACHE PATH "Third party library home" )
 	endif()
 endif()
 
 # lookup Google Test libraries
 lookup_lib ( GTEST gtest )
 lookup_lib ( GTEST_MAIN gtest_main )
+
+# lookup pthread library
+find_library(pthread_lib pthread)
 
 
 # ------------------------------------------------------------- configuration for platforms

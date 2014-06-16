@@ -13,11 +13,12 @@ if (GCC_INCLUDE_DIR)
 endif()
 
 # get code root directory (based on current file name path)
-get_filename_component( project_code_dir ${CMAKE_CURRENT_LIST_FILE} PATH )
+get_filename_component( project_cmake_dir ${CMAKE_CURRENT_LIST_FILE} PATH )
+get_filename_component( project_code_dir ${project_cmake_dir} PATH )
 get_filename_component( project_root_dir ${project_code_dir} PATH )
 
-include (${project_code_dir}/lookup_lib.cmake)
-include (${project_code_dir}/add_unit_test.cmake)
+include (${project_cmake_dir}/lookup_lib.cmake)
+include (${project_cmake_dir}/add_unit_test.cmake)
 
 set ( project_inc_dir 	            	${project_code_dir}/include )
 set ( project_src_dir 	            	${project_code_dir}/src )

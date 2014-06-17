@@ -21,7 +21,21 @@ include_directories( ${project_inc_dir} )
 # Build the code as a library
 add_library(project_lib ${LINKING_TYPE} ${project_srcs} ${project_incs})
 
-# Build executables
+
+# build executables
+file(GLOB_RECURSE executables src/*.cxx)
+foreach ( exec_file ${executables})
+
+        get_filename_component( exec_name ${exec_file} NAME_WE )
+
+        # Build dummy executable
+        add_executable( ${exec_name} ${exec_file}  )
+
+	target_link_libraries(${case_name} project_lib)
+	target_link_libraries(${case_name} ${pthread_lib})
+	
+endforeach(exec_file)
+
 
 # Build unit tests
 set ( ut_prefix  ut_ )

@@ -49,6 +49,6 @@ foreach ( case_file ${test_cases})
 	target_link_libraries(${case_name} project_lib)
 	target_link_libraries(${case_name} ${pthread_lib})
 
-	add_unit_test(${case_name})
+	add_unit_test(${case_name} ${ut_prefix})
 endforeach(case_file)
 

@@ -47,9 +47,6 @@ if (NOT third_part_libs_home )
 	endif()
 endif()
 
-# lookup Google Test libraries
-lookup_lib ( GTEST gtest )
-lookup_lib ( GTEST_MAIN gtest_main )
 
 # lookup pthread library
 find_library(pthread_lib pthread)
@@ -95,6 +92,9 @@ endif()
 
 
 # --------------------------------------------------------- Valgrind / GTest testing suite
+
+# fix GTEST version
+set(GTEST_VERSION 1.7.0)
 
 # add -all-valgrind target
 add_custom_target(valgrind)
